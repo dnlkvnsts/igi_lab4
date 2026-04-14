@@ -1,0 +1,13 @@
+--- Analysis Report v1.0.0 ---
+Total Sentences: 7
+Declarative (.): 2
+Interrogative (?): 3
+Exclamatory (!): 2
+Avg Sentence Len (chars): 21.86
+Avg Word Len (chars): 4.25
+Smileys Count: 3
+Capital+Digit Words: ['World1', 'FF0000', 'Car1']
+HTML Colors: ['#FF0000']
+Min Len Words Count: 5
+Words before dot: ['красный']
+Longest word ending in R: None

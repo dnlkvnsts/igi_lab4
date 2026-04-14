@@ -64,11 +64,9 @@ class Competition:
         self.teams.append(Team(name, points))
 
     def sort_by_rank(self):
-        """Sorts teams by points descending."""
         self.teams.sort(key=lambda x: x.points, reverse=True)
 
     def find_team_by_name(self, search_name):
-        """Searches for a team (Case-insensitive)."""
         return [t for t in self.teams if t.name.lower() == search_name.lower()]
     
     def save_csv(self, filename):
@@ -110,69 +108,68 @@ def run_task1():
         comp.add_team(n, p)
 
     while True:
-        print("\n--- TASK 1 MENU (Variant 6) ---")
+        print("\n--- TASK 1 MENU  ---")
         print("1. Add team")
-        print("2. Show Leaderboard (Sorted)")
-        print("3. Find First Place")
-        print("4. Search by Name")
+        print("2. Show board")
+        print("3. Find first place")
+        print("4. Search by name")
         print("5. CSV (Save/Load)")
         print("6. Pickle (Save/Load)")
         print("0. Back")
 
         choice = val.get_int_input("\nSelect operation: ")
 
-        try:
-            if choice == 1:
-                n, p = inp.input_team_data()
-                comp.add_team(n, p)
-                out.print_message("Team added successfully.")
+        
+        if choice == 1:
+            n, p = inp.input_team_data()
+            comp.add_team(n, p)
+            out.print_message("Team added successfully.")
 
-            elif choice == 2:
-                comp.sort_by_rank()
-                out.output_teams_table(comp.teams)
+        elif choice == 2:
+            comp.sort_by_rank()
+            out.output_teams_table(comp.teams)
 
-            elif choice == 3:
-                comp.sort_by_rank()
-                if comp.teams:
-                    out.print_message(f"FIRST PLACE: {comp.teams[0]}")
+        elif choice == 3:
+            comp.sort_by_rank()
+            if comp.teams:
+                out.print_message(f"First place: {comp.teams[0]}")
+            else:
+                out.print_message("List is empty.")
+
+        elif choice == 4:
+            while True:
+                s_name = val.get_string("Enter name to search : ")
+                results = comp.find_team_by_name(s_name)
+                if results:
+                    out.output_teams_table(results)
+                    break  
                 else:
-                    out.print_message("List is empty.")
+                    out.print_message(f"Team '{s_name}' not found. Please try again.")
 
-            elif choice == 4:
-                while True:
-                    s_name = val.get_string("Enter name to search : ")
-                    results = comp.find_team_by_name(s_name)
-                    if results:
-                        out.output_teams_table(results)
-                        break  
-                    else:
-                        out.print_message(f"Team '{s_name}' not found. Please try again.")
+        elif choice == 5:
+            sub = val.get_int_input("1. Save CSV | 2. Load CSV: ")
+            fname = inp.input_filename(".csv")
+            if sub == 1: 
+                comp.save_csv(fname)
+                out.print_message("Saved.")
+            else: 
+                if comp.load_csv(fname): out.print_message("Loaded.")
+                else: out.print_message("File not found.")
 
-            elif choice == 5:
-                sub = val.get_int_input("1. Save CSV | 2. Load CSV: ")
-                fname = inp.input_filename(".csv")
-                if sub == 1: 
-                    comp.save_csv(fname)
-                    out.print_message("Saved.")
-                else: 
-                    if comp.load_csv(fname): out.print_message("Loaded.")
-                    else: out.print_message("File not found.")
+        elif choice == 6:
+            sub = val.get_int_input("1. Save Pickle | 2. Load Pickle: ")
+            fname = inp.input_filename(".pkl")
+            if sub == 1: 
+                comp.save_pickle(fname)
+                out.print_message("Saved.")
+            else: 
+                if comp.load_pickle(fname): out.print_message("Loaded.")
+                else: out.rint_message("File not found.")
 
-            elif choice == 6:
-                sub = val.get_int_input("1. Save Pickle | 2. Load Pickle: ")
-                fname = inp.input_filename(".pkl")
-                if sub == 1: 
-                    comp.save_pickle(fname)
-                    out.print_message("Saved.")
-                else: 
-                    if comp.load_pickle(fname): out.print_message("Loaded.")
-                    else: out.rint_message("File not found.")
-
-            elif choice == 0:
-                break
+        elif choice == 0:
+            break
             
-            if not inp.repeat_task():
-                break
+        if not inp.repeat_task():
+            break
 
-        except Exception as e:
-            out.print_message(f"Error : {e}")
+        
