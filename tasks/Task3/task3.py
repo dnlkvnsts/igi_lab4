@@ -6,6 +6,9 @@ import base.validation as val
 import base.output as out
 import base.input as inp
 
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class StatsMixin:
     def calculate_stats(self, data_sequence):
         if not data_sequence:
@@ -152,7 +155,8 @@ def run_task3():
             stats = analyzer.calculate_stats(sequence_fx)
             out.output_statistics(stats)
 
-            analyzer.build_plot()
+            plot_filename = os.path.join(CURRENT_DIR, "plot_task3.png")
+            analyzer.build_plot(plot_filename)
 
         except ValueError as e:
             print(f"\n[!] Input Error: {e}")

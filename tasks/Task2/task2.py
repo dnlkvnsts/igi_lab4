@@ -6,6 +6,9 @@ import base.output as out
 import base.input as inp
 
 
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class ArchiveMixin:
     def create_archive(self, file_to_zip, zip_name):
         with zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED) as zf:
@@ -95,7 +98,7 @@ def run_task2():
     while True:
         out.print_message("TASK 2 ")
         
-        input_file = "source_text.txt"
+        input_file = os.path.join(CURRENT_DIR, "source_text.txt")
         if not os.path.exists(input_file):
             with open(input_file, 'w', encoding='utf-8') as f:
                 f.write("Привет, World1!!! Как твои дела сегодня?! Цвет #FF0000 — это ярко-красный... А ты знал, что Car1 едет со скоростью 120 км/ч? Вот смайлики для теста: правильные :-))) и ;---[[[, а также 'сломанные' :-)( и ;--. Отличная погода, не правда ли? Да, просто супер!")
@@ -111,8 +114,8 @@ def run_task2():
 
         out.print_analysis_results(proc.results)
 
-        res_txt = "result_task2.txt"
-        res_zip = "result_task2.zip"
+        res_txt = os.path.join(CURRENT_DIR, "result_task2.txt")
+        res_zip = os.path.join(CURRENT_DIR, "result_task2.zip")
         proc.save_and_archive(res_txt, res_zip)
 
         if not inp.repeat_task():

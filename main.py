@@ -11,12 +11,12 @@ Developer: Danilkova Anastasia Alexandrovna
 Date: 13.04.2026
 """
 
-import tasks.task1 as t1
-import tasks.task2 as t2
-import tasks.task3 as t3
-import tasks.task4 as t4
-import tasks.task5 as t5
-import tasks.task6 as t6
+import tasks.Task1.task1 as t1
+import tasks.Task2.task2 as t2
+import tasks.Task3.task3 as t3
+import tasks.Task4.task4 as t4
+import tasks.Task5.task5 as t5
+import tasks.Task6.task6 as t6
 
 def main():
     print("Program\n")

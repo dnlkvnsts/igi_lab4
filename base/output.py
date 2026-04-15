@@ -51,3 +51,14 @@ def output_statistics(stats):
     print("\n--- SEQUENCE STATISTICS ---")
     for key, value in stats.items():
         print(f"{key:.<25} {value:.6f}")
+
+#Task 4
+
+def print_rhomb_info(rhomb_obj):
+    print("\n" + "="*50)
+    print(f"{'ДАННЫЕ ОБЪЕКТА':^50}")
+    print("-"*50)
+    print(rhomb_obj.get_info())
+    print("="*50 + "\n")
+    
+#Task 5
