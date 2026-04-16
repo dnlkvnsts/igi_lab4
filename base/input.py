@@ -40,8 +40,11 @@ def input_rhomb_data():
 
 #Task 5
 
-
-
+def input_matrix_dims():
+    """Gets matrix dimensions from user."""
+    n = val.get_int_input("Enter the number of rows (n): ")
+    m = val.get_int_input("Enter the number of columns (m): ")
+    return n, m
 
 
 

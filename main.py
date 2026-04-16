@@ -16,7 +16,8 @@ import tasks.Task2.task2 as t2
 import tasks.Task3.task3 as t3
 import tasks.Task4.task4 as t4
 import tasks.Task5.task5 as t5
-import tasks.Task6.task6 as t6
+import tasks.Task6.task6A as t6A
+import tasks.Task6.task6B as t6B
 
 def main():
     print("Program\n")
@@ -27,7 +28,8 @@ def main():
         print("3. Task 3")
         print("4. Task 4")
         print("5. Task 5")
-        print("6. Task 6")
+        print("6A. Task 6A")
+        print("6B. Task 6B")
         print("0. Exit\n")
     
         choice = input("Choose one option\n")
@@ -42,8 +44,10 @@ def main():
             t4.run_task4()
         elif choice == "5":
             t5.run_task5()
-        elif choice == "6":
-            t6.run_task5()
+        elif choice == "6A":
+            t6A.run_task6A()
+        elif choice == "6B":
+            t6B.run_task6B()
         elif choice == "0":
             break
         else:

@@ -62,3 +62,25 @@ def print_rhomb_info(rhomb_obj):
     print("="*50 + "\n")
     
 #Task 5
+
+def output_matrix(matrix, title="Matrix:"):
+    print(f"\n{title}")
+    print(matrix)
+
+def output_stats(stats_dict):
+    print("\n" + "="*50)
+    print(f"{'STATISTICAL ANALYSIS RESULTS':^50}")
+    print("="*50)
+    for key, value in stats_dict.items():
+        if isinstance(value, float):
+            print(f"{key:.<35} {value:.2f}")
+        else:
+            print(f"{key:.<35} {value}")
+    print("="*50)
+    
+#Task 6
+
+def output_dataframe(df, title="DataFrame Content:"):
+    """Displays a Pandas DataFrame with a title."""
+    print(f"\n--- {title} ---")
+    print(df.to_string())
