@@ -4,32 +4,53 @@
 # Task 1
 
 def output_teams_table(teams_list):
+    """
+    Displays a list of team objects in a formatted table structure.
     
-        if not teams_list:
-            print("\n[!] The list is not contain this team.")
-            return
+    The table includes an index number (№), the team's name, and their points.
+    If the list is empty, a corresponding message is displayed to the user.
 
-        header = f"| {'№':^3} | {'Team Name':^20} | {'Points':^10} |"
-        sep = "-" * len(header)
+    Args:
+        teams_list (list): A list of objects (expected to have 'name' and 'points' attributes).
+    """
+    if not teams_list:
+        print("\nThe list is not contain this team.")
+        return
+
+   
+    header = f"| {'№':^3} | {'Team Name':^20} | {'Points':^10} |"
+    sep = "-" * len(header)
+
+    print("\n" + sep)
+    print(header)
+    print(sep)
+
     
-        print("\n" + sep)
-        print(header)
-        print(sep)
-    
-        for i, team in enumerate(teams_list, 1):
-            print(f"| {i:^3} | {team.name:^20} | {team.points:^10} |")
-    
-        print(sep)
-        
+    for i, team in enumerate(teams_list, 1):
+        print(f"| {i:^3} | {team.name:^20} | {team.points:^10} |")
+
+    print(sep)
+
 
 def print_message(msg):
+    """
+    Prints a formatted system message to the console.
+
+    Args:
+        msg (str): The message text to be displayed.
+    """
     print(f"\n>>> {msg}")
     
 # Task 2
 def print_analysis_results(results):
-    """Helper for Task 2 to print dictionary results nicely."""
+    """
+    Prints the text analysis results in a formatted table.
+
+    Args:
+        results (dict): A dictionary containing analysis results (key-value pairs).
+    """
     print("\n" + "="*40)
-    print(f"{'TEXT ANALYSIS RESULTS':^40}")
+    print(f"{'Text analysis result':^40}")
     print("="*40)
     for key, value in results.items():
         print(f"{key:.<30} {value}")

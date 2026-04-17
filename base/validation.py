@@ -11,6 +11,7 @@ Developer: Danilkova Anastasia Alexandrovna
 Date: 13.04.2026
 """
 
+import re
 
 def get_int_input(text):
     """
@@ -23,12 +24,13 @@ def get_int_input(text):
         int: The valid integer number entered by the user.
     """
     while True:
-        try:
-            return int(input(text))
-        except ValueError:
-            print("Invalid input. Please enter an integer number.\n")
+        user_input = input(text)
+        if re.fullmatch(r'[+-]?\d+', user_input):
+            return int(user_input)
+        print("Invalid input. Please enter an integer number.\n")
 
 
+           
 
 def get_string(message):
     """
@@ -43,7 +45,7 @@ def get_string(message):
     while True:
         text=input(message)
     
-        if text.strip():
+        if re.search(r'\S', text):
             return text
     
         print("Invalid input. The string cannot be empty or consist only of spaces.\n")
@@ -60,10 +62,10 @@ def get_float_input(text):
         float: The valid float number entered by the user.
     """
     while True:
-        try:
-            return float(input(text))
-        except ValueError:
-            print("Invalid input. Please enter a number.\n")
+        user_input = input(text)
+        if re.fullmatch(r'[+-]?\d+(\.\d+)?', user_input):
+            return float(user_input)
+        print("Invalid input. Please enter a number.\n")
             
             
 

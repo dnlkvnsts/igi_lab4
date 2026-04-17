@@ -1,28 +1,49 @@
 
 
-
+import re
 import base.validation as val
 
 
 #Task 1
 
 def input_team_data():
-    
+    """
+    Ask the user to enter a team name and its current points.
+
+    Returns:
+        tuple: A tuple containing the team name (str) and points (int).
+    """
     name = val.get_string("Enter team name: ")
-    points = val.get_int_input("Enter points: ")
-    return name, points
+    while True:
+        points = val.get_int_input("Enter points: ")
+        if points >= 0:
+            return name, points
+        print("Points cannot be negative! Please try again.\n")
 
 def input_filename(extension=".csv"):
+    """
+    Ask the user for a filename and automatically appends the extension if it's missing.
+    Uses regular expressions to validate the file extension at the end of the string.
+
+    Args:
+        extension (str): The required file extension (e.g., '.csv' or '.pkl').
+
+    Returns:
+        str: The validated filename with the correct extension.
+    """
     name = val.get_string(f"Enter filename (default will add {extension}): ")
-    if not name.endswith(extension):
+    pattern = re.escape(extension) + r"$"
+    
+    if not re.search(pattern, name, re.IGNORECASE):
         name += extension
+        
     return name
 
 
 #Task 4
 
 def input_rhomb_data():
-    """Отдельная функция для ввода данных ромба"""
+   
     print("\n--- Ввод данных ромба ---")
     side = val.get_float_input("Введите сторону ромба (a): ")
     
