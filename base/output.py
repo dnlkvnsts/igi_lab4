@@ -59,6 +59,13 @@ def print_analysis_results(results):
 # Task 3
 
 def output_math_table(data):
+    """
+    Prints a formatted table of Taylor series calculation results.
+
+    Args:
+        data (list): A list of dictionaries containing keys 'x', 'n', 'f_x', 'math_x', and 'eps'.
+
+    """
     header = f"| {'x':^8} | {'n':^5} | {'F(x)':^12} | {'Math F(x)':^12} | {'eps':^10} |"
     sep = "-" * len(header)
     print("\n" + sep)
@@ -69,7 +76,14 @@ def output_math_table(data):
     print(sep)
 
 def output_statistics(stats):
-    print("\n--- SEQUENCE STATISTICS ---")
+    """
+    Displays the calculated statistical results in a list with dotted alignment.
+
+    Args:
+        stats (dict): A dictionary where keys are stat names and values are float results.
+
+    """
+    print("\n--- statistics ---")
     for key, value in stats.items():
         print(f"{key:.<25} {value:.6f}")
 
