@@ -1,1 +1,1 @@
-Figure: Rhomb | Color: red | Side: 10.0 | Angle: 60.0° | Area: 86.6
+Figure: Rhomb | Color: black | Side: 40.0 | Angle: 50.0 | Area: 1225.67 | Number of figures: 2

@@ -43,18 +43,23 @@ def input_filename(extension=".csv"):
 #Task 4
 
 def input_rhomb_data():
-   
-    print("\n--- Ввод данных ромба ---")
-    side = val.get_float_input("Введите сторону ромба (a): ")
+    """
+    Collects rhomb parameters from the user via console input.
+
+    Returns:
+        tuple: A tuple containing (side, angle, color, label).
+               side (float): The length of the side.
+               angle (float): The acute angle in degrees.
+               color (str): The name of the color.
+               label (str): The text label for the figure.
+    """
+    print("\n--- Rhomb Data Input ---")
+    side = val.get_side_of_rhomb("Enter the side length of the rhomb (a): ")
     
-    while True:
-        angle = val.get_float_input("Введите угол в градусах (0 < angle < 90): ")
-        if 0 < angle < 90:
-            break
-        print("Ошибка: для данной задачи угол должен быть от 0 до 90 градусов.")
-        
-    color = val.get_string("Введите цвет фигуры (например, red, blue): ")
-    label = val.get_string("Введите подпись для фигуры: ")
+    angle = val.get_valid_angle("Enter the angle in degrees (0 < angle < 90): ")
+     
+    color = val.get_color_input("Enter the shape color (name or #hex): ")
+    label = val.get_string("Enter a label for the shape: ")
     
     return side, angle, color, label
 
@@ -62,30 +67,35 @@ def input_rhomb_data():
 #Task 5
 
 def input_matrix_dims():
-    """Gets matrix dimensions from user."""
-    n = val.get_int_input("Enter the number of rows (n): ")
-    m = val.get_int_input("Enter the number of columns (m): ")
+    """
+    Prompts the user to input the dimensions (rows and columns) for a matrix.
+    Uses a validation utility to ensure that the inputs are positive integers.
+
+    Returns:
+        tuple: A tuple containing (n, m), where:
+               n (int): The number of rows.
+               m (int): The number of columns.
+    """
+    n = val.get_int_positive_input("Enter the number of rows (n): ")
+    m = val.get_int_positive_input("Enter the number of columns (m): ")
     return n, m
-
-
-
 
 
     
 def repeat_task():
     """
-    Asks the user if they want to repeat the task.
-
+    Asks the user whether to repeat the current task.
+    
+    
     Returns:
-        bool: True if the user wants to repeat, False otherwise.
+        bool: True if the user enters 'y' or 'Y' (yes), 
+              False if the user enters 'n' or 'N' (no).
     """
     while True:
-            choice = input("Repeat this task ?(y/n) ").lower()
-            if choice == "y":
-                return True
-            elif choice == "n":
-                return False
-            else:
-                print("Invalid input!!! Input y or n\n")
-                
-                
+        choice = input("Repeat this task? (y/n): ")
+        if re.fullmatch(r"^[yY]$", choice):
+            return True
+        if re.fullmatch(r"^[nN]$", choice):
+            return False
+
+        print("Invalid input!!! Please enter y or n (case insensitive).\n")

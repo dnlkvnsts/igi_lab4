@@ -90,6 +90,12 @@ def output_statistics(stats):
 #Task 4
 
 def print_rhomb_info(rhomb_obj):
+    """
+    Displays formatted information about the Rhomb object on the screen.
+
+    Args:
+        rhomb_obj (Rhomb): An instance of the Rhomb class containing the shape's data.
+    """
     print("\n" + "="*50)
     print(f"{'ДАННЫЕ ОБЪЕКТА':^50}")
     print("-"*50)
@@ -99,12 +105,29 @@ def print_rhomb_info(rhomb_obj):
 #Task 5
 
 def output_matrix(matrix, title="Matrix:"):
+    """
+    Prints a matrix or array to the console with a formatted title.
+
+    Args:
+        matrix (np.ndarray or list): The matrix data to be displayed.
+        title (str): The header text to print above the matrix (default is "Matrix:").
+
+    """
     print(f"\n{title}")
     print(matrix)
 
 def output_stats(stats_dict):
-    print("\n" + "="*50)
-    print(f"{'STATISTICAL ANALYSIS RESULTS':^50}")
+    """
+    Displays statistical analysis results in a structured and readable table format.
+    Automatically formats float values to two decimal places and aligns text.
+
+    Args:
+        stats_dict (dict): A dictionary where keys are labels (str) and 
+                           values are the results (float, int, or list).
+
+    """
+
+    print(f"{'Results':^50}")
     print("="*50)
     for key, value in stats_dict.items():
         if isinstance(value, float):
@@ -115,7 +138,13 @@ def output_stats(stats_dict):
     
 #Task 6
 
-def output_dataframe(df, title="DataFrame Content:"):
-    """Displays a Pandas DataFrame with a title."""
+def output_dataframe(df, title="DataFrame :"):
+    """
+    Formats and prints a Pandas DataFrame to the console.
+
+    Args:
+        df (pd.DataFrame): The DataFrame object to display.
+        title (str): The header text to print above the table.
+    """
     print(f"\n--- {title} ---")
     print(df.to_string())
