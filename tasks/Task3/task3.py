@@ -69,40 +69,90 @@ class MathFunction:
 
     @property
     def x_start(self):
-        """float: The starting value of the interval."""
+        """
+        Gets the starting value of the interval.
+
+        Returns:
+            float: The value of the interval start.
+        """
         return self._x_start
 
     @x_start.setter
     def x_start(self, value):
+        """
+        Sets the starting value of the interval.
+
+        Args:
+            value (float): New starting value.
+        """
         self._x_start = value
 
     @property
     def x_end(self):
-        """float: The ending value of the interval."""
+        """
+        Gets the ending value of the interval.
+
+        Returns:
+            float: The value of the interval end.
+        """
         return self._x_end
 
     @x_end.setter
     def x_end(self, value):
+        """
+        Sets the ending value of the interval.
+
+        Args:
+            value (float): New ending value.
+        """
         self._x_end = value
 
     @property
     def step(self):
-        """float: The step value, must be positive."""
+        """
+        Gets the calculation step.
+
+        Returns:
+            float: The current step value.
+        """
         return self._step
 
     @step.setter
     def step(self, value):
+        """
+        Sets the calculation step and validates that it is positive.
+
+        Args:
+            value (float): New step value (must be > 0).
+
+        Raises:
+            ValueError: If the step is zero or negative.
+        """
         if value <= 0:
             raise ValueError("Step must be positive!")
         self._step = value
 
     @property
     def eps(self):
-        """float: The precision value, must be between 0 and 1."""
+        """
+        Gets the precision value (epsilon).
+
+        Returns:
+            float: The current precision threshold.
+        """
         return self._eps
 
     @eps.setter
     def eps(self, value):
+        """
+        Sets the precision value and validates its range.
+
+        Args:
+            value (float): New precision value (must be between 0 and 1).
+
+        Raises:
+            ValueError: If the value is outside the (0, 1) range.
+        """
         if value <= 0 or value >= 1:
             raise ValueError("Precision (eps) must be between 0 and 1!")
         self._eps = value
@@ -201,14 +251,14 @@ class SinAnalyzer(MathFunction, StatsMixin):
             plt.ylabel("Y Axis")
             plt.legend()
             
-            plt.annotate('Origin', xy=(0, 0), xytext=(0.5, 0.5),
+            plt.annotate('Origin', xy=(0, 0), xytext=(0.1, 0.1),
                          arrowprops=dict(
                              arrowstyle='->',  
                              color='black',   
                              lw=1.5            
                          ))
             
-            plt.text(x_vals[0], y_taylor[0], f"Start eps={self.eps}")
+            plt.text(x_vals[1], y_taylor[0], f"Start eps={self.eps}")
             
             
             plt.savefig(save_path)
@@ -220,8 +270,7 @@ class SinAnalyzer(MathFunction, StatsMixin):
                   "Close the file if it is open in another program.")
         except FileNotFoundError:
             print(f"Error: The directory for '{save_path}' does not exist.")
-        except Exception as e:
-            
+        except Exception as e: 
             print(f"An unexpected error occurred while building the plot: {e}")
         finally:
             plt.close()
