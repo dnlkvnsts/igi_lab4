@@ -42,14 +42,12 @@ def get_int_positive_input(text):
         int: The valid integer number entered by the user.
     """
     while True:
-        user_input = input(text)
-        if re.fullmatch(r'[+-]?\d+', user_input):
-            if int(user_input)>0:
-                return int(user_input)
-            else:
-                print("Invalid input. Please enter an integer number.\n")
+        number = get_int_input(text)
+        if number > 0:
+            return number
         else:
-            print("Invalid input. Please enter an integer number.\n")
+            print("Invalid input. Please enter an integer positive number.\n")
+        
            
 
 def get_string(message):

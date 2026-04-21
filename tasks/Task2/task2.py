@@ -258,12 +258,12 @@ def run_task2():
     Handles file input/creation, runs the analyzer, and manages output reporting.
     """
     while True:
-        out.print_message("TASK 2 ")
+        out.print_message("Task 2 ")
         
         input_file = os.path.join(CURRENT_DIR, "source_text.txt")
         if not os.path.exists(input_file):
             with open(input_file, 'w', encoding='utf-8') as f:
-                f.write("Hello, World1!!! How are you today?! The color #FF0000 is bright red... Did you know that Car1 is driving at 120 km/h? Here are some smileys for testing: correct :-))) and ;---[[[, also 'broken' :-)( and ;--. Nice weather, isn't it? Yes, just super!")
+                f.write("Hello, World1!!! How are you today?! The color AAA000 #FF0000 is bright red... Did you know that Car1 is driving at 120 km/h? Here are some smileys for testing: correct :-))) and ;---[[[, also 'broken' :-)( and ;--. Nice weather, isn't it? Yes, just super!")
         
         try:
             with open(input_file, 'r', encoding='utf-8') as f:
