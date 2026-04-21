@@ -236,7 +236,7 @@ class Rhomb(Shape, FileSaverMixin):
         v3 = [a + a * math.cos(alpha), a * math.sin(alpha)]
         v4 = [a * math.cos(alpha), a * math.sin(alpha)]
         
-        fig, ax = plt.subplots()
+        _, ax = plt.subplots()
         polygon = patches.Polygon([v1, v2, v3, v4], closed=True, 
                                   linewidth=2, edgecolor='black', 
                                   facecolor=self.color_obj.color)
@@ -279,14 +279,11 @@ def run_task4():
             
         except ValueError as ve:
             print(f"\nValueError: {ve}")
-            print("please, enter correct data")
+            print("Please enter correct data.")
         except OSError as oe:
-            print(f"OSError: Не удалось сохранить файл. Подробности: {oe}")
+            print(f"OSError: Failed to save the file. Details: {oe}")
         except RuntimeError as re:
-            print((f"RuntimeError: Проблема при построении графика. Подробности: {re}"))
-            
-            
-
+            print(f"RuntimeError: An error occurred while rendering the plot. Details: {re}")
         if not inp.repeat_task():
             break
             

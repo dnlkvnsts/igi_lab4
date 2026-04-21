@@ -97,7 +97,7 @@ def print_rhomb_info(rhomb_obj):
         rhomb_obj (Rhomb): An instance of the Rhomb class containing the shape's data.
     """
     print("\n" + "="*50)
-    print(f"{'ДАННЫЕ ОБЪЕКТА':^50}")
+    print(f"{'Data':^50}")
     print("-"*50)
     print(rhomb_obj.get_info())
     print("="*50 + "\n")

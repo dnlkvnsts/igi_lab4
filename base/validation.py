@@ -141,7 +141,7 @@ def get_valid_angle(prompt, min_angle=0, max_angle=90):
         print(f"Invalid input. Please enter an angle between {min_angle} and {max_angle}.\n")
 
 
-def get_color_input(prompt):
+def get_color_input(text):
     """
     Asks the user to input a color and validates it using a regular expression.
     Supports names (letters only) or hex codes (e.g., #FFFFFF).
@@ -155,7 +155,7 @@ def get_color_input(prompt):
     color_pattern = r'^\s*([a-zA-Z]+|#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}))\s*$'
 
     while True:
-        raw_input = input(prompt)
+        raw_input = input(text)
         match = re.match(color_pattern, raw_input)
         
         if match:        
